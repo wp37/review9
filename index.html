@@ -33,6 +33,27 @@
             transform: translateY(-8px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
+
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            background-color: white;
+            color: #374151;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: #9ca3af;
+        }
     </style>
 </head>
 
@@ -43,7 +64,7 @@
     </div>
 
     <div class="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
-        <header class="text-center mb-12">
+        <header class="text-center mb-8">
             <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-lg px-6 py-3 rounded-full mb-6">
                 <span class="text-3xl">📚</span>
                 <span class="text-white font-bold text-lg">Ezteach</span>
@@ -56,8 +77,8 @@
         </header>
 
         <main>
-            <a href="quiz-global9-unit7-8.html"
-                class="quiz-card block bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden">
+            <!-- Quiz Card with Form -->
+            <div class="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden">
                 <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-center">
                     <div class="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-4">
                         <span class="text-3xl">🌍</span>
@@ -66,21 +87,23 @@
                     <p class="text-indigo-100">Natural Wonders & Tourism</p>
                 </div>
                 <div class="p-6">
-                    <div class="grid grid-cols-3 gap-4 mb-4">
-                        <div class="text-center p-3 bg-indigo-50 rounded-xl">
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="text-center p-3 bg-indigo-50 rounded-xl border-2 border-indigo-100">
                             <div class="text-xl font-bold text-indigo-600">20</div>
                             <div class="text-xs text-gray-500">Câu hỏi</div>
                         </div>
-                        <div class="text-center p-3 bg-purple-50 rounded-xl">
+                        <div class="text-center p-3 bg-purple-50 rounded-xl border-2 border-purple-100">
                             <div class="text-xl font-bold text-purple-600">20</div>
                             <div class="text-xs text-gray-500">Phút</div>
                         </div>
-                        <div class="text-center p-3 bg-pink-50 rounded-xl">
+                        <div class="text-center p-3 bg-pink-50 rounded-xl border-2 border-pink-100">
                             <div class="text-xl font-bold text-pink-600">10</div>
                             <div class="text-xs text-gray-500">Điểm</div>
                         </div>
                     </div>
-                    <div class="text-sm text-gray-600 space-y-1 mb-4">
+
+                    <div
+                        class="text-sm text-gray-600 space-y-1 mb-6 p-4 bg-gray-50 rounded-xl border-2 border-gray-100">
                         <div class="flex items-center gap-2">
                             <span class="text-indigo-500">📖</span>
                             <span>Unit 7: Natural Wonders of the World</span>
@@ -90,15 +113,37 @@
                             <span>Unit 8: Tourism</span>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between">
+
+                    <!-- Form nhập thông tin -->
+                    <form id="studentForm" class="space-y-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">👤 Họ và tên học sinh</label>
+                            <input type="text" id="studentName" class="input-field" placeholder="Nhập họ và tên..."
+                                required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">🏫 Lớp</label>
+                            <input type="text" id="studentClass" class="input-field" placeholder="Ví dụ: 9A1" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">📱 Số điện thoại phụ huynh
+                                <span class="text-red-500">*</span></label>
+                            <input type="tel" id="parentPhone" class="input-field"
+                                placeholder="Nhập SĐT cha/mẹ (VD: 0912345678)" required pattern="[0-9]{10,11}">
+                            <p class="text-xs text-gray-500 mt-1">Kết quả sẽ được gửi đến phụ huynh để xác nhận</p>
+                        </div>
+                    </form>
+
+                    <div class="flex items-center justify-between mb-4">
                         <span class="text-xs text-gray-400">⏰ 19:00 - Thứ Bảy, 08/02/2026</span>
-                        <span
-                            class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-full">
-                            Làm bài →
-                        </span>
                     </div>
+
+                    <a href="quiz-global9-unit7-8.html" id="startBtn"
+                        class="block w-full py-4 text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        🚀 Bắt đầu làm bài
+                    </a>
                 </div>
-            </a>
+            </div>
         </main>
 
         <section class="mt-8 bg-white/95 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
@@ -106,28 +151,28 @@
                 <span>📋</span> Hướng dẫn làm bài
             </h3>
             <div class="grid md:grid-cols-2 gap-4 text-gray-600">
-                <div class="flex items-start gap-3">
+                <div class="flex items-start gap-3 p-3 bg-indigo-50 rounded-xl border-2 border-indigo-100">
                     <span class="text-2xl">1️⃣</span>
                     <div>
                         <div class="font-semibold text-gray-800">Nhập thông tin</div>
                         <div class="text-sm">Họ tên, lớp, số điện thoại phụ huynh</div>
                     </div>
                 </div>
-                <div class="flex items-start gap-3">
+                <div class="flex items-start gap-3 p-3 bg-purple-50 rounded-xl border-2 border-purple-100">
                     <span class="text-2xl">2️⃣</span>
                     <div>
                         <div class="font-semibold text-gray-800">Làm bài trong thời gian quy định</div>
                         <div class="text-sm">Bài sẽ tự nộp khi hết giờ</div>
                     </div>
                 </div>
-                <div class="flex items-start gap-3">
+                <div class="flex items-start gap-3 p-3 bg-pink-50 rounded-xl border-2 border-pink-100">
                     <span class="text-2xl">3️⃣</span>
                     <div>
                         <div class="font-semibold text-gray-800">Chỉ làm 1 lần duy nhất</div>
                         <div class="text-sm">Mỗi số điện thoại chỉ được làm 1 lần</div>
                     </div>
                 </div>
-                <div class="flex items-start gap-3">
+                <div class="flex items-start gap-3 p-3 bg-emerald-50 rounded-xl border-2 border-emerald-100">
                     <span class="text-2xl">4️⃣</span>
                     <div>
                         <div class="font-semibold text-gray-800">Kết quả tự động lưu</div>
@@ -137,7 +182,7 @@
             </div>
         </section>
 
-        <section class="mt-6 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 backdrop-blur">
+        <section class="mt-6 bg-amber-500/10 border-2 border-amber-500/30 rounded-2xl p-4 backdrop-blur">
             <div class="flex items-start gap-3">
                 <span class="text-2xl">⚠️</span>
                 <div class="text-amber-200">
@@ -165,6 +210,34 @@
             <p class="mt-2 text-xs">THCS Nguyễn Văn Bánh - Xã Nhuận Phú Tân, Vĩnh Long</p>
         </footer>
     </div>
+
+    <script>
+        // Lưu thông tin tạm thời khi click vào nút bắt đầu
+        document.getElementById('startBtn').addEventListener('click', function (e) {
+            const name = document.getElementById('studentName').value.trim();
+            const className = document.getElementById('studentClass').value.trim();
+            const phone = document.getElementById('parentPhone').value.trim();
+
+            if (!name || !className || !phone) {
+                e.preventDefault();
+                alert('Vui lòng điền đầy đủ thông tin trước khi bắt đầu!');
+                return false;
+            }
+
+            if (!/^[0-9]{10,11}$/.test(phone)) {
+                e.preventDefault();
+                alert('Vui lòng nhập số điện thoại hợp lệ (10-11 số)!');
+                return false;
+            }
+
+            // Lưu vào localStorage để quiz page có thể sử dụng
+            localStorage.setItem('temp_student_info', JSON.stringify({
+                name: name,
+                className: className,
+                parentPhone: phone
+            }));
+        });
+    </script>
 </body>
 
 </html>
