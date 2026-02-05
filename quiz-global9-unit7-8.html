@@ -427,6 +427,22 @@
             $('prevBtn').onclick = () => navigate(-1);
             $('nextBtn').onclick = () => navigate(1);
             $('submitBtn').onclick = handleSubmit;
+
+            // Load info from index page
+            const savedInfo = localStorage.getItem('ezteach_student_info');
+            if (savedInfo) {
+                try {
+                    const info = JSON.parse(savedInfo);
+                    if (info.name) $('studentName').value = info.name;
+                    if (info.className) $('studentClass').value = info.className;
+                    if (info.parentPhone) $('parentPhone').value = info.parentPhone;
+
+                    // Optional: Auto start or focus submit button
+                    // But let's verify first
+                } catch (e) {
+                    console.error('Error loading saved info', e);
+                }
+            }
         });
 
         // ===== SCHEDULE CHECK =====
