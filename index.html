@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Tập Tiếng Anh 8 - Unit 7 & 8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+        }
+
+        .timer {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .timer.warning {
+            background: linear-gradient(135deg, var(--warning), #d97706);
+            animation: pulse 1s infinite;
+        }
+
+        .timer.danger {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 99px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 99px;
+            transition: width 0.3s ease;
+        }
+
+        .question-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .question-category {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 14px 18px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: #f0f4ff;
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+        }
+
+        .option.correct {
+            border-color: var(--success);
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+        }
+
+        .option.incorrect {
+            border-color: var(--danger);
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+        }
+
+        .option-letter {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-letter {
+            background: var(--primary);
+            color: white;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .result-score {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .result-text {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .blocked-card {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .blocked-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        .blocked-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--danger);
+            margin-bottom: 12px;
+        }
+
+        .blocked-message {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .previous-result {
+            background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .previous-score {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 640px) {
+            .glass-card {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .result-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Form đăng nhập -->
+        <div id="loginForm" class="glass-card">
+            <h1>📚 Ôn Tập Tiếng Anh 8</h1>
+            <p class="subtitle">Unit 7: Environmental Protection & Unit 8: Shopping</p>
+
+            <div class="form-group">
+                <label for="studentName">👤 Họ và tên</label>
+                <input type="text" id="studentName" placeholder="Nhập họ và tên của bạn" required>
+            </div>
+
+            <div class="form-group">
+                <label for="studentClass">🏫 Lớp</label>
+                <input type="text" id="studentClass" placeholder="Ví dụ: 8A1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="parentPhone">📱 SĐT Cha/Mẹ</label>
+                <input type="tel" id="parentPhone" placeholder="Nhập số điện thoại phụ huynh" required>
+            </div>
+
+            <button class="btn btn-primary" onclick="startQuiz()">
+                🚀 Bắt đầu làm bài
+            </button>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quizSection" class="glass-card hidden">
+            <div class="timer" id="timer">
+                ⏱️ <span id="timerDisplay">15:00</span>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+
+            <div id="questionsContainer"></div>
+
+            <button class="btn btn-success" onclick="submitQuiz()">
+                ✅ Nộp bài
+            </button>
+        </div>
+
+        <!-- Result Section -->
+        <div id="resultSection" class="glass-card hidden">
+            <div class="result-card">
+                <div class="result-score" id="resultScore">0</div>
+                <div class="result-text" id="resultText">Bạn đã hoàn thành bài kiểm tra!</div>
+
+                <div class="result-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="correctCount">0</div>
+                        <div class="stat-label">Câu đúng</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalCount">20</div>
+                        <div class="stat-label">Tổng câu hỏi</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="timeTaken">00:00</div>
+                        <div class="stat-label">Thời gian</div>
+                    </div>
+                </div>
+
+                <!-- Nút làm lại đã bị ẩn - chỉ cho làm 1 lần -->
+            </div>
+        </div>
+
+        <!-- Blocked Section - Đã làm bài rồi -->
+        <div id="blockedSection" class="glass-card hidden">
+            <div class="blocked-card">
+                <div class="blocked-icon">🚫</div>
+                <div class="blocked-title">Bạn đã hoàn thành bài kiểm tra!</div>
+                <div class="blocked-message">
+                    Mỗi học sinh chỉ được làm bài kiểm tra <strong>1 lần duy nhất</strong>.<br>
+                    Kết quả của bạn đã được ghi nhận.
+                </div>
+                <div class="previous-result">
+                    <div>Kết quả trước đó:</div>
+                    <div class="previous-score" id="previousScore">0</div>
+                    <div id="previousInfo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CẤU HÌNH =====
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbylrVB3I7pfaid0VWm4OBkF4H1jAGZ_8N8p7m6pjpMWRQWWVMBBsLHjdam1-NTzKkj-/exec';
+        const QUIZ_ID = 'quiz_unit7_8_review'; // ID duy nhất cho bài quiz này
+        const TIME_LIMIT = 15 * 60; // 15 phút
+
+        // ===== CÂU HỎI =====
+        const questions = [
+            // ==================== UNIT 7: ENVIRONMENTAL PROTECTION ====================
+            // --- Từ vựng Unit 7 (5 câu) ---
+            {
+                id: 1,
+                unit: 7,
+                category: "vocabulary",
+                question: "The Amazon rainforest provides a rich _______ for millions of species.",
+                options: ["ecosystem", "pollution", "footprint", "display"],
+                correct: 0
+            },
+            {
+                id: 2,
+                unit: 7,
+                category: "vocabulary",
+                question: "Saolas and dugongs are _______ in Vietnam.",
+                options: ["carbon footprint", "single-use", "endangered species", "habitats"],
+                correct: 2
+            },
+            {
+                id: 3,
+                unit: 7,
+                category: "vocabulary",
+                question: "Forests serve as a natural _______ for many wild animals.",
+                options: ["pollution", "habitat", "footprint", "ecosystem"],
+                correct: 1
+            },
+            {
+                id: 4,
+                unit: 7,
+                category: "vocabulary",
+                question: "We should avoid using _______ plastic bags to protect the environment.",
+                options: ["endangered", "home-grown", "single-use", "carbon"],
+                correct: 2
+            },
+            {
+                id: 5,
+                unit: 7,
+                category: "vocabulary",
+                question: "Walking or cycling can help reduce your _______.",
+                options: ["habitat", "ecosystem", "pollution", "carbon footprint"],
+                correct: 3
+            },
+
+            // --- Ngữ pháp Unit 7 (5 câu) ---
+            {
+                id: 6,
+                unit: 7,
+                category: "grammar",
+                question: "_______ my friends arrive, we will clean up the beach.",
+                options: ["As soon as", "While", "Until", "Before"],
+                correct: 0
+            },
+            {
+                id: 7,
+                unit: 7,
+                category: "grammar",
+                question: "You must get a permit _______ you build a campfire at a national park.",
+                options: ["after", "before", "when", "as soon as"],
+                correct: 1
+            },
+            {
+                id: 8,
+                unit: 7,
+                category: "grammar",
+                question: "Don't use too much water _______ you are having a shower.",
+                options: ["before", "until", "while", "after"],
+                correct: 2
+            },
+            {
+                id: 9,
+                unit: 7,
+                category: "grammar",
+                question: "We should wait here _______ the rain stops.",
+                options: ["before", "when", "until", "while"],
+                correct: 2
+            },
+            {
+                id: 10,
+                unit: 7,
+                category: "grammar",
+                question: "Remember to turn off the lights _______ you go to bed.",
+                options: ["while", "as soon as", "until", "before"],
+                correct: 3
+            },
+
+            // ==================== UNIT 8: SHOPPING ====================
+            // --- Từ vựng Unit 8 (5 câu) ---
+            {
+                id: 11,
+                unit: 8,
+                category: "vocabulary",
+                question: "You can _______ at the open-air market to get a lower price.",
+                options: ["browse", "bargain", "display", "waste"],
+                correct: 1
+            },
+            {
+                id: 12,
+                unit: 8,
+                category: "vocabulary",
+                question: "I love _______ through fashion magazines to see new trends.",
+                options: ["bargaining", "shopping", "browsing", "selling"],
+                correct: 2
+            },
+            {
+                id: 13,
+                unit: 8,
+                category: "vocabulary",
+                question: "These shoes are _______ - you can buy them at 50% off!",
+                options: ["on sale", "home-made", "single-use", "home-grown"],
+                correct: 0
+            },
+            {
+                id: 14,
+                unit: 8,
+                category: "vocabulary",
+                question: "I want to go to a _______ to buy some snacks on the way home.",
+                options: ["discount shop", "speciality shop", "convenience store", "dollar store"],
+                correct: 2
+            },
+            {
+                id: 15,
+                unit: 8,
+                category: "vocabulary",
+                question: "Most of the vegetables sold at the market were _______.",
+                options: ["on sale", "home-grown", "single-use", "online shopping"],
+                correct: 1
+            },
+
+            // --- Ngữ pháp Unit 8 (5 câu) ---
+            {
+                id: 16,
+                unit: 8,
+                category: "grammar",
+                question: "My mother _______ shops at the supermarket. She prefers the local market.",
+                options: ["always", "usually", "often", "never"],
+                correct: 3
+            },
+            {
+                id: 17,
+                unit: 8,
+                category: "grammar",
+                question: "The train _______ at 4:30, so we still have a lot of time.",
+                options: ["will leave", "leaving", "leaves", "is going to leave"],
+                correct: 2
+            },
+            {
+                id: 18,
+                unit: 8,
+                category: "grammar",
+                question: "The summer sales _______ next Sunday.",
+                options: ["will end", "are ending", "end", "ended"],
+                correct: 2
+            },
+            {
+                id: 19,
+                unit: 8,
+                category: "grammar",
+                question: "She _______ goes shopping on weekends because she works during the week.",
+                options: ["never", "rarely", "always", "usually"],
+                correct: 3
+            },
+            {
+                id: 20,
+                unit: 8,
+                category: "grammar",
+                question: "My art lesson _______ at one o'clock every Tuesday.",
+                options: ["start", "starts", "is starting", "will start"],
+                correct: 1
+            }
+        ];
+
+        // ===== BIẾN TOÀN CỤC =====
+        let studentInfo = {};
+        let userAnswers = {};
+        let startTime = null;
+        let timerInterval = null;
+        let remainingTime = TIME_LIMIT;
+
+        // ===== KIỂM TRA ĐÃ LÀM BÀI CHƯA =====
+        function checkAlreadyCompleted() {
+            const savedResult = localStorage.getItem(QUIZ_ID);
+            if (savedResult) {
+                const result = JSON.parse(savedResult);
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('blockedSection').classList.remove('hidden');
+                document.getElementById('previousScore').textContent = result.score;
+                document.getElementById('previousInfo').innerHTML = `
+                    <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary);">
+                        👤 ${result.name} | 🏫 ${result.class}<br>
+                        📊 ${result.correctCount}/${result.totalQuestions} câu đúng<br>
+                        ⏱️ Thời gian: ${result.timeTaken}<br>
+                        📅 ${result.timestamp}
+                    </div>
+                `;
+                return true;
+            }
+            return false;
+        }
+
+        // Kiểm tra khi tải trang
+        window.onload = function () {
+            checkAlreadyCompleted();
+        };
+
+        // ===== FUNCTIONS =====
+        function startQuiz() {
+            const name = document.getElementById('studentName').value.trim();
+            const classVal = document.getElementById('studentClass').value.trim();
+            const phone = document.getElementById('parentPhone').value.trim();
+
+            if (!name || !classVal || !phone) {
+                alert('Vui lòng điền đầy đủ thông tin!');
+                return;
+            }
+
+            studentInfo = {
+                name: name,
+                class: classVal,
+                parentPhone: phone
+            };
+
+            startTime = new Date();
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('quizSection').classList.remove('hidden');
+
+            renderQuestions();
+            startTimer();
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                const categoryLabel = q.category === 'vocabulary' ? 'Từ vựng' : 'Ngữ pháp';
+                const unitLabel = `Unit ${q.unit}`;
+
+                const questionHTML = `
+                    <div class="question-card" data-question-id="${q.id}">
+                        <div class="question-header">
+                            <div class="question-number">${index + 1}</div>
+                            <span class="question-category">${unitLabel} - ${categoryLabel}</span>
+                        </div>
+                        <div class="question-text">${q.question}</div>
+                        <div class="options">
+                            ${q.options.map((opt, optIndex) => `
+                                <div class="option" onclick="selectOption(${q.id}, ${optIndex})" data-option-index="${optIndex}">
+                                    <span class="option-letter">${String.fromCharCode(65 + optIndex)}</span>
+                                    <span>${opt}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += questionHTML;
+            });
+        }
+
+        function selectOption(questionId, optionIndex) {
+            userAnswers[questionId] = optionIndex;
+
+            // Update UI
+            const questionCard = document.querySelector(`[data-question-id="${questionId}"]`);
+            const options = questionCard.querySelectorAll('.option');
+            options.forEach((opt, idx) => {
+                opt.classList.remove('selected');
+                if (idx === optionIndex) {
+                    opt.classList.add('selected');
+                }
+            });
+
+            // Update progress
+            const answeredCount = Object.keys(userAnswers).length;
+            const progress = (answeredCount / questions.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        function startTimer() {
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                remainingTime--;
+                updateTimerDisplay();
+
+                if (remainingTime <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(remainingTime / 60);
+            const seconds = remainingTime % 60;
+            const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            document.getElementById('timerDisplay').textContent = display;
+
+            const timerEl = document.getElementById('timer');
+            timerEl.classList.remove('warning', 'danger');
+            if (remainingTime <= 60) {
+                timerEl.classList.add('danger');
+            } else if (remainingTime <= 180) {
+                timerEl.classList.add('warning');
+            }
+        }
+
+        function submitQuiz() {
+            clearInterval(timerInterval);
+
+            const endTime = new Date();
+            const timeTakenMs = endTime - startTime;
+            const timeTakenMinutes = Math.floor(timeTakenMs / 60000);
+            const timeTakenSeconds = Math.floor((timeTakenMs % 60000) / 1000);
+            const timeTakenStr = `${String(timeTakenMinutes).padStart(2, '0')}:${String(timeTakenSeconds).padStart(2, '0')}`;
+
+            // Calculate score
+            let correctCount = 0;
+            const details = [];
+
+            questions.forEach(q => {
+                const userAnswer = userAnswers[q.id];
+                const isCorrect = userAnswer === q.correct;
+                if (isCorrect) correctCount++;
+
+                details.push({
+                    question: q.id,
+                    unit: q.unit,
+                    category: q.category,
+                    userAnswer: userAnswer !== undefined ? q.options[userAnswer] : 'Không trả lời',
+                    correctAnswer: q.options[q.correct],
+                    isCorrect: isCorrect
+                });
+            });
+
+            const score = (correctCount / questions.length) * 10;
+            const scoreFormatted = score.toFixed(1);
+
+            // Show results
+            document.getElementById('quizSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.remove('hidden');
+            document.getElementById('resultScore').textContent = scoreFormatted;
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('totalCount').textContent = questions.length;
+            document.getElementById('timeTaken').textContent = timeTakenStr;
+
+            // Prepare data for Google Sheet
+            const data = {
+                timestamp: endTime.toLocaleString('vi-VN'),
+                name: studentInfo.name,
+                class: studentInfo.class,
+                parentPhone: studentInfo.parentPhone,
+                score: parseFloat(scoreFormatted),
+                correctCount: correctCount,
+                totalQuestions: questions.length,
+                timeTaken: timeTakenStr,
+                details: JSON.stringify(details)
+            };
+
+            // Lưu vào localStorage để ngăn làm lại
+            const savedData = {
+                name: studentInfo.name,
+                class: studentInfo.class,
+                score: scoreFormatted,
+                correctCount: correctCount,
+                totalQuestions: questions.length,
+                timeTaken: timeTakenStr,
+                timestamp: data.timestamp
+            };
+            localStorage.setItem(QUIZ_ID, JSON.stringify(savedData));
+
+            // Send to Google Sheet
+            sendToSheet(data);
+        }
+
+        function sendToSheet(data) {
+            if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                console.log('Dữ liệu sẽ được gửi:', data);
+                return;
+            }
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+                .then(() => {
+                    console.log('Đã gửi dữ liệu thành công!');
+                })
+                .catch(error => {
+                    console.error('Lỗi khi gửi dữ liệu:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>
