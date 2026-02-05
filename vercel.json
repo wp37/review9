@@ -1,7 +1,20 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/unit7-8-review", "destination": "/quiz-unit7-8-review.html" },
-    { "source": "/unit7-8", "destination": "/quiz-global9-unit7-8.html" }
+    {
+      "source": "/",
+      "destination": "/index-global9.html"
+    },
+    {
+      "source": "/lop8",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/unit7-8-review",
+      "destination": "/quiz-unit7-8-review.html"
+    },
+    {
+      "source": "/unit7-8",
+      "destination": "/quiz-global9-unit7-8.html"
+    }
   ]
 }
